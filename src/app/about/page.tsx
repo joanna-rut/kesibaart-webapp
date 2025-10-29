@@ -49,8 +49,6 @@ export default function AboutPage() {
     }
   }, [remotePhotos]);
 
-  const bioParts = bioText.split(email);
-
   return (
     <div className="container mx-auto px-4 py-8 pt-28 min-h-screen">
       <h1 className="text-4xl md:text-5xl font-headline text-center mb-12 text-accent">
@@ -81,11 +79,7 @@ export default function AboutPage() {
           )}
         </div>
         <div className="md:col-span-3 space-y-4 text-base md:text-lg text-foreground/90 leading-relaxed">
-          <p>{bioParts[0]}
-            <a href={`mailto:${email}`} className="text-primary font-semibold hover:underline break-words">
-              {email}
-            </a>
-          {bioParts[1]}</p>
+          <p>{bioText}</p>
         </div>
       </div>
       
