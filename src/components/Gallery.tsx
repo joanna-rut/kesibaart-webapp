@@ -54,15 +54,6 @@ const GallerySkeleton = () => (
   </div>
 );
 
-// Helper to chunk the photos into pairs for the two-row layout
-function chunkPhotos(photos: GalleryPhoto[], chunkSize: number): GalleryPhoto[][] {
-  const result: GalleryPhoto[][] = [];
-  for (let i = 0; i < photos.length; i += chunkSize) {
-    result.push(photos.slice(i, i + chunkSize));
-  }
-  return result;
-}
-
 export default function Gallery() {
   const firestore = useFirestore();
   const [photos, setPhotos] = useState<GalleryPhoto[]>(placeholderData.gallery);
@@ -152,8 +143,6 @@ export default function Gallery() {
       </Alert>
     );
   }
-  
-  const photoPairs = chunkPhotos(photos, 2);
 
   return (
     <>
@@ -162,21 +151,17 @@ export default function Gallery() {
           align: "start",
           loop: true,
         }}
-        className="w-full"
+        className="w-full relative"
       >
-        <CarouselContent>
-          {photoPairs.map((pair, index) => (
-            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-              <div className="flex flex-col gap-4">
-                {pair.map(photo => (
-                  <GalleryItem key={photo.id} photo={photo} onPhotoClick={openLightbox} />
-                ))}
-              </div>
+        <CarouselContent className="-ml-4">
+          {photos.map((photo, index) => (
+            <CarouselItem key={photo.id || index} className="pl-4 basis-1/2 md:basis-1/3">
+              <GalleryItem photo={photo} onPhotoClick={openLightbox} />
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="hidden md:flex" />
-        <CarouselNext className="hidden md:flex" />
+        <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10 hidden md:flex" />
+        <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 hidden md:flex" />
       </Carousel>
 
       {selectedPhoto && (
