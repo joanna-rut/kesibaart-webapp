@@ -37,7 +37,17 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b">
       <div className="container mx-auto flex h-24 items-center justify-between px-4">
-        <div /> 
+        <Link href="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
+            <Image
+              src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_m8lzwm8lzwm8lzwm.png"
+              alt="Kesiba Art logo"
+              width={200}
+              height={80}
+              priority
+              quality={100}
+              className="h-20 w-auto"
+            />
+        </Link>
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <NavLink key={link.href} {...link} />
@@ -53,7 +63,19 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] bg-background">
               <div className="p-6 h-full flex flex-col">
-                 <div className="h-20" />
+                <div className="mb-6">
+                    <Link href="/" onClick={() => setMenuOpen(false)}>
+                        <Image
+                            src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_m8lzwm8lzwm8lzwm.png"
+                            alt="Kesiba Art logo"
+                            width={160}
+                            height={64}
+                            priority
+                            quality={100}
+                            className="h-16 w-auto"
+                        />
+                    </Link>
+                </div>
                 <nav className="flex flex-col gap-6">
                   {navLinks.map((link) => (
                     <NavLink key={link.href} {...link} />
