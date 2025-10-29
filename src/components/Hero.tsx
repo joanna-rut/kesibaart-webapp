@@ -2,20 +2,17 @@
 
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { EtsyIcon, EBayIcon } from '@/components/icons';
 import placeholderData from '@/app/lib/placeholder-images.json';
 
 const heroLinks = [
   {
     name: 'Etsy',
     href: 'https://www.etsy.com/shop/kesibaart/',
-    icon: EtsyIcon,
     color: 'bg-primary hover:bg-primary/90',
   },
   {
     name: 'eBay',
     href: 'https://www.ebay.ca/sch/i.html?item=176714948962&rt=nc&_trksid=p4429486.m3561.l161211&_ssn=kesiba',
-    icon: EBayIcon,
     color: 'bg-secondary hover:bg-secondary/80 text-secondary-foreground',
   },
 ];
@@ -56,7 +53,6 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center"
               >
-                <link.icon className="mr-3 h-6 w-6" />
                 <span>Shop on {link.name}</span>
               </a>
             </Button>
