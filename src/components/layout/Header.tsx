@@ -35,11 +35,11 @@ export function Header() {
   );
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b">
       <div className="container mx-auto flex h-24 items-center justify-between px-4">
         <Link href="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
             <Image
-              src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/kesiba-art-logo.png"
+              src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_m8lzwm8lzwm8lzwm.png"
               alt="Kesiba Art logo"
               width={200}
               height={80}
@@ -64,7 +64,7 @@ export function Header() {
               <div className="p-6 h-full flex flex-col">
                  <Link href="/" className="flex items-center gap-2 mb-8" onClick={() => setMenuOpen(false)}>
                     <Image
-                        src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/kesiba-art-logo.png"
+                        src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_m8lzwm8lzwm8lzwm.png"
                         alt="Kesiba Art logo"
                         width={200}
                         height={80}
