@@ -27,7 +27,8 @@
     {
       "id": "ornament-1",
       "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/bombka1.jpg",
-      "title": "Blue and Gold Ornament"
+      "title": "Blue and Gold Ornament",
+      "description": "This classic ornament features a deep blue base with intricate, hand-painted gold detailing, perfect for adding a touch of timeless elegance to your Christmas tree."
     },
     {
       "id": "ornament-2",
@@ -61,7 +62,7 @@
     },
     {
       "id": "ornament-8",
-      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/20250928_233905.jpg",
+      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/blob/main/images/20250928_233905.jpg?raw=true",
       "title": "Silver Ornament"
     }
   ]
