@@ -36,18 +36,15 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
-      <div className="container mx-auto flex h-24 items-center justify-between px-4">
+      <div className="container mx-auto flex h-28 items-center justify-between px-4">
         <Link href="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
             <Image
-                src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_y3vqgqy3vqgqy3vq.png"
-                alt="Kesiba Art logo K"
-                width={60}
-                height={60}
-                className="h-16 w-auto"
+                src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_1y6f3o1y6f3o1y6f.png"
+                alt="Kesiba Art logo"
+                width={200}
+                height={80}
+                className="h-20 w-auto"
             />
-          <span className="font-headline text-4xl font-bold text-accent -ml-4">
-            esiba Art
-          </span>
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
@@ -65,9 +62,13 @@ export function Header() {
             <SheetContent side="right" className="w-[280px] bg-background">
               <div className="p-6 h-full flex flex-col">
                  <Link href="/" className="flex items-center gap-2 mb-8" onClick={() => setMenuOpen(false)}>
-                    <span className="font-headline text-2xl font-bold text-accent">
-                        Kesiba Art
-                    </span>
+                    <Image
+                        src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_1y6f3o1y6f3o1y6f.png"
+                        alt="Kesiba Art logo"
+                        width={150}
+                        height={60}
+                        className="h-14 w-auto"
+                    />
                 </Link>
                 <nav className="flex flex-col gap-6">
                   {navLinks.map((link) => (
