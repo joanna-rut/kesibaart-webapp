@@ -39,6 +39,7 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <div className="container mx-auto flex h-28 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
+          <div className="p-2 bg-background rounded-md">
             <Image
               src={logoUrl}
               alt="Kesiba Art Logo"
@@ -47,6 +48,7 @@ export function Header() {
               className="h-[100px] w-auto"
               priority
             />
+          </div>
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
