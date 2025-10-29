@@ -5,11 +5,12 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Feather } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { KesibaArtLogo } from '@/components/icons';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
+  { href: '/', label: 'Gallery' },
   { href: '/about', label: 'My Story' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -36,7 +37,7 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
-          <Feather className="h-6 w-6 text-primary" />
+          <KesibaArtLogo className="h-7 w-7 text-primary" />
           <span className="font-headline text-xl font-bold text-accent">
             Kesiba Art
           </span>
@@ -57,7 +58,7 @@ export function Header() {
             <SheetContent side="right" className="w-[280px] bg-background">
               <div className="p-6 h-full flex flex-col">
                 <Link href="/" className="flex items-center gap-2 mb-8">
-                  <Feather className="h-6 w-6 text-primary" />
+                  <KesibaArtLogo className="h-7 w-7 text-primary" />
                    <span className="font-headline text-xl font-bold text-accent">
                     Kesiba Art
                   </span>
