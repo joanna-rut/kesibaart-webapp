@@ -17,16 +17,9 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from '@/components/ui/button';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 
 const GalleryItem = ({ photo, onPhotoClick }: { photo: GalleryPhoto, onPhotoClick: (photo: GalleryPhoto) => void }) => (
-  <button onClick={() => onPhotoClick(photo)} className="group relative overflow-hidden rounded-lg shadow-lg aspect-square block w-full h-[250px] md:h-[200px]">
+  <button onClick={() => onPhotoClick(photo)} className="group relative overflow-hidden rounded-lg shadow-lg aspect-square block w-full">
     <Image
       src={photo.url}
       alt={photo.title || 'Kesiba Art piece'}
@@ -146,25 +139,11 @@ export default function Gallery() {
 
   return (
     <>
-      <Carousel
-        opts={{
-          align: "start",
-          loop: photos.length > 8,
-        }}
-        className="w-full relative"
-      >
-        <CarouselContent className="-ml-4">
-          {photos.map((photo, index) => (
-             <CarouselItem key={photo.id || index} className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4">
-                <div className="mb-4">
-                  <GalleryItem photo={photo} onPhotoClick={openLightbox} />
-                </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10 hidden md:flex" />
-        <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 hidden md:flex" />
-      </Carousel>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        {photos.map((photo, index) => (
+          <GalleryItem key={photo.id || index} photo={photo} onPhotoClick={openLightbox} />
+        ))}
+      </div>
 
       {selectedPhoto && (
         <Dialog open={!!selectedPhoto} onOpenChange={(isOpen) => !isOpen && closeLightbox()}>
