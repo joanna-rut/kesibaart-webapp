@@ -38,7 +38,7 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
-          <Image src={logoUrl} alt="Kesiba Art Logo" width={32} height={32} className="h-8 w-8" />
+          <Image src={logoUrl} alt="Kesiba Art Logo" width={64} height={64} className="h-8 w-8" />
           <span className="font-headline text-xl font-bold text-accent">
             Kesiba Art
           </span>
@@ -59,7 +59,7 @@ export function Header() {
             <SheetContent side="right" className="w-[280px] bg-background">
               <div className="p-6 h-full flex flex-col">
                 <Link href="/" className="flex items-center gap-2 mb-8">
-                  <Image src={logoUrl} alt="Kesiba Art Logo" width={32} height={32} className="h-8 w-8" />
+                  <Image src={logoUrl} alt="Kesiba Art Logo" width={64} height={64} className="h-8 w-8" />
                    <span className="font-headline text-xl font-bold text-accent">
                     Kesiba Art
                   </span>
