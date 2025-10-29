@@ -1,3 +1,4 @@
+
 'use client';
 
 import { collection, query, where } from 'firebase/firestore';
@@ -28,14 +29,7 @@ const GalleryItem = ({ photo, onPhotoClick }: { photo: GalleryPhoto, onPhotoClic
       sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
       data-ai-hint="art ornament"
     />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-    {photo.title && (
-      <div className="absolute bottom-0 left-0 p-4 w-full text-left">
-        <h3 className="text-white text-lg font-headline opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-          {photo.title}
-        </h3>
-      </div>
-    )}
+    <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
   </button>
 );
 
