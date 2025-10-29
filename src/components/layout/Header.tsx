@@ -46,7 +46,7 @@ export function Header() {
                 height={60}
                 className="h-[60px] w-auto"
               />
-              <span className="text-3xl font-headline text-accent -ml-2">esiba Art</span>
+              <span className="text-3xl font-headline text-accent -ml-5">esiba Art</span>
             </div>
         </Link>
         <nav className="hidden md:flex items-center gap-6">
