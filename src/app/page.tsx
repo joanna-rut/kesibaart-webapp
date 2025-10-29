@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8 pt-28">
       <h1 className="text-4xl md:text-5xl font-headline text-center mb-8 text-accent">
-        Gallery
+        Home
       </h1>
       <Gallery />
       <Separator className="my-12 md:my-16 bg-primary/10" />

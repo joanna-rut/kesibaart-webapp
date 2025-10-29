@@ -9,8 +9,9 @@ import { Menu, Feather } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { href: '/', label: 'Gallery' },
-  { href: '/about', label: 'About Anna' },
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'My Story' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export function Header() {

@@ -43,7 +43,7 @@ export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-8 pt-28 min-h-screen">
       <h1 className="text-4xl md:text-5xl font-headline text-center mb-12 text-accent">
-        About Anna
+        My Story
       </h1>
       <div className="grid md:grid-cols-5 gap-8 md:gap-12 items-center">
         <div className="md:col-span-2 w-full">
