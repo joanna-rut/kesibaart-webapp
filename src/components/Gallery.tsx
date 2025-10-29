@@ -6,7 +6,7 @@ import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import type { GalleryPhoto } from '@/lib/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import placeholderData from '@/app/lib/placeholder-images.json';
 import { useEffect, useState } from 'react';
 import {
@@ -16,6 +16,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { Button } from '@/components/ui/button';
 
 const GalleryItem = ({ photo, onPhotoClick }: { photo: GalleryPhoto, onPhotoClick: (photo: GalleryPhoto) => void }) => (
   <button onClick={() => onPhotoClick(photo)} className="group relative overflow-hidden rounded-lg shadow-lg aspect-square block w-full">
@@ -88,6 +89,21 @@ export default function Gallery() {
     setSelectedPhoto(null);
   };
 
+  const handleNavigation = (direction: 'next' | 'prev') => {
+    if (!selectedPhoto || photos.length <= 1) return;
+
+    const currentIndex = photos.findIndex(p => p.id === selectedPhoto.id);
+    if (currentIndex === -1) return;
+
+    let nextIndex;
+    if (direction === 'next') {
+      nextIndex = (currentIndex + 1) % photos.length;
+    } else {
+      nextIndex = (currentIndex - 1 + photos.length) % photos.length;
+    }
+    setSelectedPhoto(photos[nextIndex]);
+  };
+
   if (loading) {
     return <GallerySkeleton />;
   }
@@ -129,6 +145,29 @@ export default function Gallery() {
                 <DialogDescription className="mt-4 text-base text-foreground/80">
                   {selectedPhoto.description}
                 </DialogDescription>
+            )}
+
+            {photos.length > 1 && (
+              <>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={() => handleNavigation('prev')}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full h-10 w-10 bg-black/30 hover:bg-black/50 text-white"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={() => handleNavigation('next')}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-10 w-10 bg-black/30 hover:bg-black/50 text-white"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </Button>
+              </>
             )}
           </DialogContent>
         </Dialog>
