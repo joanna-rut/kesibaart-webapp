@@ -54,7 +54,7 @@ export default function AboutPage() {
   const restOfBio = bioParts.length > 1 ? bioParts.slice(1).join(email) : '';
 
   return (
-    <div className="container mx-auto px-4 py-8 pt-56 min-h-screen">
+    <div className="container mx-auto px-4 py-8 pt-32 min-h-screen">
       <h1 className="text-4xl md:text-5xl font-headline text-center mb-12 text-accent">
         My Story
       </h1>

@@ -30,7 +30,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 pt-56 min-h-screen">
+    <div className="container mx-auto px-4 py-8 pt-32 min-h-screen">
       <div className="max-w-2xl mx-auto text-center">
         <h1 className="text-4xl md:text-5xl font-headline mb-8 text-accent">
           Get in Touch

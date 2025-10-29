@@ -22,7 +22,7 @@ export default function Hero() {
   const { heroBanner } = placeholderData;
 
   return (
-    <div className="relative w-full h-[60vh] min-h-[400px] mt-56">
+    <div className="relative w-full h-[60vh] min-h-[400px] pt-24">
       <div className="absolute inset-0 z-0">
         <Image
           src={heroBanner.url}
