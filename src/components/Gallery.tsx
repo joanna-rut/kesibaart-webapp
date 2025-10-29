@@ -17,9 +17,16 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from '@/components/ui/button';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const GalleryItem = ({ photo, onPhotoClick }: { photo: GalleryPhoto, onPhotoClick: (photo: GalleryPhoto) => void }) => (
-  <button onClick={() => onPhotoClick(photo)} className="group relative overflow-hidden rounded-lg shadow-lg aspect-square block w-full">
+  <button onClick={() => onPhotoClick(photo)} className="group relative overflow-hidden rounded-lg shadow-lg aspect-square block w-full h-[250px] md:h-[300px]">
     <Image
       src={photo.url}
       alt={photo.title || 'Kesiba Art piece'}
@@ -41,11 +48,20 @@ const GalleryItem = ({ photo, onPhotoClick }: { photo: GalleryPhoto, onPhotoClic
 
 const GallerySkeleton = () => (
   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-    {Array.from({ length: 12 }).map((_, index) => (
+    {Array.from({ length: 8 }).map((_, index) => (
       <Skeleton key={index} className="h-72 w-full rounded-lg" />
     ))}
   </div>
 );
+
+// Helper to chunk the photos into pairs for the two-row layout
+function chunkPhotos(photos: GalleryPhoto[], chunkSize: number): GalleryPhoto[][] {
+  const result: GalleryPhoto[][] = [];
+  for (let i = 0; i < photos.length; i += chunkSize) {
+    result.push(photos.slice(i, i + chunkSize));
+  }
+  return result;
+}
 
 export default function Gallery() {
   const firestore = useFirestore();
@@ -136,14 +152,32 @@ export default function Gallery() {
       </Alert>
     );
   }
+  
+  const photoPairs = chunkPhotos(photos, 2);
 
   return (
     <>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-        {photos.map(photo => (
-          <GalleryItem key={photo.id} photo={photo} onPhotoClick={openLightbox} />
-        ))}
-      </div>
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        className="w-full"
+      >
+        <CarouselContent>
+          {photoPairs.map((pair, index) => (
+            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+              <div className="flex flex-col gap-4">
+                {pair.map(photo => (
+                  <GalleryItem key={photo.id} photo={photo} onPhotoClick={openLightbox} />
+                ))}
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="hidden md:flex" />
+        <CarouselNext className="hidden md:flex" />
+      </Carousel>
 
       {selectedPhoto && (
         <Dialog open={!!selectedPhoto} onOpenChange={(isOpen) => !isOpen && closeLightbox()}>
