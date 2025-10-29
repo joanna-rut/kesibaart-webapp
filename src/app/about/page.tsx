@@ -36,8 +36,8 @@ export default function AboutPage() {
     return () => unsubscribe();
   }, []);
 
-  const bioText = "Hi, my name is Anna. Kesiba Art was a way for me to keep my 30-year-long passion for creation alive. I have a collection of stunning handmade ornaments, including glass baubles, figurines, egg ornaments, and lanterns. Before I started this brand, I took a lot of time and effort to craft the most gorgeous designs and sturdy materials that would keep my customers happy. Every design on ornaments has been crafted with meticulous attention to detail, a tremendous passion, and an unyielding commitment to perfection. I make everything in-house, by hand. I use glass blowing to create the ornament, paint our intricate designs, and package them with love. I make personalized and custom design baubles! Contact me to learn more at kesibaart@gmail.com";
-  const email = "kesibaart@gmail.com";
+  const bioText = "Hi, my name is Anna. Kesiba Art was a way for me to keep my 30-year-long passion for creation alive. I have a collection of stunning handmade ornaments, including glass baubles, figurines, egg ornaments, and lanterns. Before I started this brand, I took a lot of time and effort to craft the most gorgeous designs and sturdy materials that would keep my customers happy. Every design on ornaments has been crafted with meticulous attention to detail, a tremendous passion, and an unyielding commitment to perfection. I make everything in-house, by hand. I use glass blowing to create the ornament, paint our intricate designs, and package them with love. I make personalized and custom design baubles! Contact me to learn more at mohammed3.tayeb@gmail.com";
+  const email = "mohammed3.tayeb@gmail.com";
   const bioParts = bioText.split(email);
 
   return (
