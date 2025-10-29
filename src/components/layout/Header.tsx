@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -19,7 +18,6 @@ const navLinks = [
 export function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const logoUrl = 'https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_jmd952jmd952jmd9.png';
 
   const NavLink = ({ href, label, className }: { href: string; label: string; className?: string; }) => (
     <Link
@@ -37,18 +35,11 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
-      <div className="container mx-auto flex h-28 items-center justify-between px-4">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
-          <div className="p-2 bg-background rounded-md">
-            <Image
-              src={logoUrl}
-              alt="Kesiba Art Logo"
-              width={256}
-              height={88}
-              className="h-[100px] w-auto"
-              priority
-            />
-          </div>
+          <span className="font-headline text-2xl font-bold text-accent">
+            Kesiba Art
+          </span>
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
@@ -65,14 +56,10 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] bg-background">
               <div className="p-6 h-full flex flex-col">
-                <Link href="/" className="flex items-center gap-2 mb-8" onClick={() => setMenuOpen(false)}>
-                   <Image
-                      src={logoUrl}
-                      alt="Kesiba Art Logo"
-                      width={256}
-                      height={88}
-                      className="h-[100px] w-auto"
-                   />
+                 <Link href="/" className="flex items-center gap-2 mb-8" onClick={() => setMenuOpen(false)}>
+                    <span className="font-headline text-2xl font-bold text-accent">
+                        Kesiba Art
+                    </span>
                 </Link>
                 <nav className="flex flex-col gap-6">
                   {navLinks.map((link) => (
