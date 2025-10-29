@@ -37,14 +37,14 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
-      <div className="container mx-auto flex h-24 items-center justify-between px-4">
+      <div className="container mx-auto flex h-28 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
             <Image
               src={logoUrl}
               alt="Kesiba Art Logo"
               width={256}
               height={88}
-              className="h-[88px] w-auto"
+              className="h-[100px] w-auto"
               priority
             />
         </Link>
@@ -69,7 +69,7 @@ export function Header() {
                       alt="Kesiba Art Logo"
                       width={256}
                       height={88}
-                      className="h-[88px] w-auto"
+                      className="h-[100px] w-auto"
                    />
                 </Link>
                 <nav className="flex flex-col gap-6">
