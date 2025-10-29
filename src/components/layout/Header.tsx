@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Logo } from '@/components/Logo';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -37,8 +36,8 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <div className="container mx-auto flex h-24 items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2">
-          <Logo className="h-[88px] w-auto" />
+        <Link href="/" className="flex items-center gap-2 text-2xl font-headline font-bold text-accent">
+          Kesiba Art
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
@@ -55,8 +54,8 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] bg-background">
               <div className="p-6 h-full flex flex-col">
-                <Link href="/" className="flex items-center gap-2 mb-8">
-                  <Logo className="h-[88px] w-auto" />
+                <Link href="/" className="flex items-center gap-2 mb-8 text-2xl font-headline font-bold text-accent">
+                  Kesiba Art
                 </Link>
                 <nav className="flex flex-col gap-6">
                   {navLinks.map((link) => (
