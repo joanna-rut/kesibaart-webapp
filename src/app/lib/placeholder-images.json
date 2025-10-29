@@ -5,6 +5,11 @@
     "title": "Anna, the artist",
     "isAboutPhoto": true
   },
+  "heroBanner": {
+    "id": "hero-banner-1",
+    "url": "https://picsum.photos/seed/hero-banner/1920/1080",
+    "title": "Hero Banner Ornaments"
+  },
   "gallery": [
     {
       "id": "ornament-1",
