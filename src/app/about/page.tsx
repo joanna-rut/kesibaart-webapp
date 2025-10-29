@@ -10,11 +10,12 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
 import placeholderData from '@/app/lib/placeholder-images.json';
+import { Separator } from '@/components/ui/separator';
 
 export default function AboutPage() {
   const firestore = useFirestore();
   const { aboutPage } = placeholderData;
-  const { photo: placeholderPhoto, bio: bioText, email } = aboutPage;
+  const { photo: placeholderPhoto, bio: bioText, email, workshopPhotos } = aboutPage;
   
   const [aboutPhoto, setAboutPhoto] = useState<string | null>(placeholderPhoto.url);
   const [loading, setLoading] = useState(false);
@@ -87,12 +88,36 @@ export default function AboutPage() {
           {bioParts[1]}</p>
         </div>
       </div>
+      
       {error && !loading && (
         <Alert variant="destructive" className="mt-8 max-w-lg mx-auto">
           <AlertCircle className="h-4 w-4" />
           <AlertTitle>Error</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
+      )}
+
+      {workshopPhotos && workshopPhotos.length > 0 && (
+        <div className="mt-16 md:mt-24">
+          <Separator className="mb-12 bg-primary/10" />
+          <h2 className="text-3xl md:text-4xl font-headline text-center mb-8 text-accent">
+            From My Workshop
+          </h2>
+          <div className="max-w-3xl mx-auto">
+             {workshopPhotos.map((photo) => (
+                <div key={photo.id} className="rounded-lg overflow-hidden shadow-xl">
+                  <Image
+                    src={photo.url}
+                    alt={photo.title || 'Kesiba Art workshop'}
+                    width={1200}
+                    height={900}
+                    className="w-full object-cover"
+                    data-ai-hint="artist workshop"
+                  />
+                </div>
+              ))}
+          </div>
+        </div>
       )}
     </div>
   );
