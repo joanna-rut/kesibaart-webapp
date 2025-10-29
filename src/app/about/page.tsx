@@ -49,6 +49,10 @@ export default function AboutPage() {
     }
   }, [remotePhotos]);
 
+  const bioParts = bioText.split(email);
+  const mainBio = bioParts[0];
+  const restOfBio = bioParts.length > 1 ? bioParts.slice(1).join(email) : '';
+
   return (
     <div className="container mx-auto px-4 py-8 pt-28 min-h-screen">
       <h1 className="text-4xl md:text-5xl font-headline text-center mb-12 text-accent">
@@ -79,7 +83,11 @@ export default function AboutPage() {
           )}
         </div>
         <div className="md:col-span-3 space-y-4 text-base md:text-lg text-foreground/90 leading-relaxed">
-          <p>{bioText}</p>
+          <p>
+            {mainBio}
+            <span className="font-bold text-primary">{email}</span>
+            {restOfBio}
+          </p>
         </div>
       </div>
       
