@@ -1,0 +1,44 @@
+/**
+ * @file Firestore Security Rules for Kesiba Art Application
+ * @description This ruleset enforces public read access for gallery photos and profile photos,
+ *              allowing anyone to retrieve this data without authentication. Write access to these
+ *              collections is restricted to prevent unauthorized modifications.
+ *
+ * Data Structure:
+ * - /artifacts/{app_id}/public/data/gallery_photos/{photoId}: Stores gallery photos.
+ * - /artifacts/{app_id}/public/data/profile_photos/{photoId}: Stores profile photos.
+ *
+ * Key Security Decisions:
+ * - Public Read Access: Gallery photos and profile photos are publicly readable.
+ * - No User-Specific Data: There are no user-specific collections or documents.
+ * - Write Restrictions: Write operations are disabled to prevent unauthorized data modification.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Allows anyone to read gallery photos, but restricts write access.
+     * @path /artifacts/{app_id}/public/data/gallery_photos/{photoId}
+     * @allow (get, list) - Any user can retrieve or list gallery photos.
+     * @deny (create, update, delete) - No one can create, update, or delete gallery photos.
+     * @principle Grants public read access, but restricts write access.
+     */
+    match /artifacts/{app_id}/public/data/gallery_photos/{photoId} {
+      allow get, list: if true;
+      allow create, update, delete: if false;
+    }
+
+    /**
+     * @description Allows anyone to read profile photos, but restricts write access.
+     * @path /artifacts/{app_id}/public/data/profile_photos/{photoId}
+     * @allow (get, list) - Any user can retrieve or list profile photos.
+     * @deny (create, update, delete) - No one can create, update, or delete profile photos.
+     * @principle Grants public read access, but restricts write access.
+     */
+    match /artifacts/{app_id}/public/data/profile_photos/{photoId} {
+      allow get, list: if true;
+      allow create, update, delete: if false;
+    }
+  }
+}
