@@ -1,0 +1,70 @@
+{
+  "aboutPhoto": {
+    "id": "anna-profile-photo",
+    "url": "https://picsum.photos/seed/anna-profile/500/600",
+    "title": "Anna, the artist",
+    "isAboutPhoto": true
+  },
+  "gallery": [
+    {
+      "id": "ornament-1",
+      "url": "https://picsum.photos/seed/ornament1/500/500",
+      "title": "Blue Bauble"
+    },
+    {
+      "id": "ornament-2",
+      "url": "https://picsum.photos/seed/ornament2/500/500",
+      "title": "Glass Figurine"
+    },
+    {
+      "id": "ornament-3",
+      "url": "https://picsum.photos/seed/ornament3/500/500",
+      "title": "Red Ornament"
+    },
+    {
+      "id": "ornament-4",
+      "url": "https://picsum.photos/seed/ornament4/500/500",
+      "title": "Golden Lantern"
+    },
+    {
+      "id": "ornament-5",
+      "url": "https://picsum.photos/seed/ornament5/500/500",
+      "title": "Hand-painted Egg"
+    },
+    {
+      "id": "ornament-6",
+      "url": "https://picsum.photos/seed/ornament6/500/500",
+      "title": "Intricate Bauble"
+    },
+    {
+      "id": "ornament-7",
+      "url": "https://picsum.photos/seed/ornament7/500/500",
+      "title": "Festive Figurine"
+    },
+    {
+      "id": "ornament-8",
+      "url": "https://picsum.photos/seed/ornament8/500/500",
+      "title": "Silver Ornament"
+    },
+    {
+      "id": "ornament-9",
+      "url": "https://picsum.photos/seed/ornament9/500/500",
+      "title": "Christmas Lantern"
+    },
+    {
+      "id": "ornament-10",
+      "url": "https://picsum.photos/seed/ornament10/500/500",
+      "title": "Custom Egg"
+    },
+    {
+      "id": "ornament-11",
+      "url": "https://picsum.photos/seed/ornament11/500/500",
+      "title": "Sparkling Bauble"
+    },
+    {
+      "id": "ornament-12",
+      "url": "https://picsum.photos/seed/ornament12/500/500",
+      "title": "Delicate Figurine"
+    }
+  ]
+}

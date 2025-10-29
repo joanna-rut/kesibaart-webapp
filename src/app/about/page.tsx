@@ -1,40 +1,49 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { collection, onSnapshot, query, where, limit } from 'firebase/firestore';
+import { collection, query, where, limit } from 'firebase/firestore';
 import Image from 'next/image';
-import { db, APP_ID } from '@/lib/firebase';
+import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import type { GalleryPhoto } from '@/lib/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
+import placeholderData from '@/app/lib/placeholder-images.json';
 
 export default function AboutPage() {
-  const [aboutPhoto, setAboutPhoto] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const firestore = useFirestore();
+  const [aboutPhoto, setAboutPhoto] = useState<string | null>(placeholderData.aboutPhoto.url);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const aboutPhotoQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(
+      collection(firestore, `gallery_photos`),
+      where("isAboutPhoto", "==", true),
+      limit(1)
+    );
+  }, [firestore]);
+
+  const { data: remotePhotos, isLoading: remoteLoading, error: remoteError } = useCollection<GalleryPhoto>(aboutPhotoQuery);
+
   useEffect(() => {
-    const collectionPath = `artifacts/${APP_ID}/public/data/gallery_photos`;
-    const q = query(collection(db, collectionPath), where("isAboutPhoto", "==", true), limit(1));
+    setLoading(remoteLoading);
+  }, [remoteLoading]);
 
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      if (!querySnapshot.empty) {
-        const doc = querySnapshot.docs[0];
-        const data = doc.data() as GalleryPhoto;
-        setAboutPhoto(data.url);
-      } else {
-        console.warn("About photo not found in Firestore.");
-      }
-      setLoading(false);
-    }, (err) => {
-      console.error("Error fetching about photo:", err);
+  useEffect(() => {
+    if (remoteError) {
+      console.error("Error fetching about photo:", remoteError);
       setError("Could not load profile information. Please try again later.");
-      setLoading(false);
-    });
+    }
+  }, [remoteError]);
 
-    return () => unsubscribe();
-  }, []);
+  useEffect(() => {
+    if (remotePhotos && remotePhotos.length > 0) {
+      setAboutPhoto(remotePhotos[0].url);
+    }
+  }, [remotePhotos]);
+
 
   const bioText = "Hi, my name is Anna. Kesiba Art was a way for me to keep my 30-year-long passion for creation alive. I have a collection of stunning handmade ornaments, including glass baubles, figurines, egg ornaments, and lanterns. Before I started this brand, I took a lot of time and effort to craft the most gorgeous designs and sturdy materials that would keep my customers happy. Every design on ornaments has been crafted with meticulous attention to detail, a tremendous passion, and an unyielding commitment to perfection. I make everything in-house, by hand. I use glass blowing to create the ornament, paint our intricate designs, and package them with love. I make personalized and custom design baubles! Contact me to learn more at mohammed3.tayeb@gmail.com";
   const email = "mohammed3.tayeb@gmail.com";
@@ -77,7 +86,7 @@ export default function AboutPage() {
           {bioParts[1]}</p>
         </div>
       </div>
-      {error && (
+      {error && !loading && (
         <Alert variant="destructive" className="mt-8 max-w-lg mx-auto">
           <AlertCircle className="h-4 w-4" />
           <AlertTitle>Error</AlertTitle>

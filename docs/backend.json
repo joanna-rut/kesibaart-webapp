@@ -22,89 +22,29 @@
         "description": {
           "type": "string",
           "description": "Detailed description of the gallery photo."
+        },
+        "isAboutPhoto": {
+          "type": "boolean",
+          "description": "Flag indicating if this is the photo for the 'My Story' page."
         }
       },
       "required": [
         "id",
         "url"
       ]
-    },
-    "ProfilePhoto": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "ProfilePhoto",
-      "type": "object",
-      "description": "Represents Anna's profile photo and associated information.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the profile photo."
-        },
-        "url": {
-          "type": "string",
-          "description": "URL of Anna's profile photo.",
-          "format": "uri"
-        },
-        "isAboutPhoto": {
-          "type": "boolean",
-          "description": "Flag indicating whether this photo is used for the About Anna section.  Should be `true` for the profile photo."
-        }
-      },
-      "required": [
-        "id",
-        "url",
-        "isAboutPhoto"
-      ]
     }
   },
   "auth": {
     "providers": [
-      "password",
       "anonymous"
     ]
   },
   "firestore": {
-    "structure": [
-      {
-        "path": "artifacts/{app_id}/public/data/gallery_photos/{photoId}",
-        "definition": {
-          "entityName": "GalleryPhoto",
-          "schema": {
-            "$ref": "#/backend/entities/GalleryPhoto"
-          },
-          "description": "Stores gallery photos. Anyone can read the data.",
-          "params": [
-            {
-              "name": "app_id",
-              "description": "The application ID."
-            },
-            {
-              "name": "photoId",
-              "description": "The unique ID of the gallery photo."
-            }
-          ]
-        }
+    "/gallery_photos/{photoId}": {
+      "schema": {
+        "$ref": "#/entities/GalleryPhoto"
       },
-      {
-        "path": "artifacts/{app_id}/public/data/profile_photos/{photoId}",
-        "definition": {
-          "entityName": "ProfilePhoto",
-          "schema": {
-            "$ref": "#/backend/entities/ProfilePhoto"
-          },
-          "description": "Stores profile photos for the About Anna page. Anyone can read the data.",
-          "params": [
-            {
-              "name": "app_id",
-              "description": "The application ID."
-            },
-            {
-              "name": "photoId",
-              "description": "The unique ID of the profile photo."
-            }
-          ]
-        }
-      }
-    ],
-    "reasoning": "The Firestore structure is designed to securely store and retrieve gallery photos and profile information for the Kesiba Art application. It prioritizes authorization independence by avoiding hierarchical dependencies. The structure uses structural segregation to manage public gallery photos and the profile photo separately. The core principle is to keep data and authorization simple to reason about. The gallery photos and profile photo are placed under the `/artifacts/{app_id}/public/data` collection to allow the retrieval without any authentication. To avoid any issues with listing documents, all documents in the gallery_photos collection have the same access needs."
+      "description": "Stores all photos for the gallery and the about page."
+    }
   }
 }

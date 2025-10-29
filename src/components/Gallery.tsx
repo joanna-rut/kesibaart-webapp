@@ -1,13 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { collection, onSnapshot, query, where, orderBy } from 'firebase/firestore';
+import { collection, query, where } from 'firebase/firestore';
 import Image from 'next/image';
-import { db, APP_ID } from '@/lib/firebase';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import type { GalleryPhoto } from '@/lib/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
+import placeholderData from '@/app/lib/placeholder-images.json';
+import { useEffect, useState } from 'react';
 
 const GalleryItem = ({ photo }: { photo: GalleryPhoto }) => (
   <div className="group relative overflow-hidden rounded-lg shadow-lg aspect-square">
@@ -39,38 +40,43 @@ const GallerySkeleton = () => (
 );
 
 export default function Gallery() {
-  const [photos, setPhotos] = useState<GalleryPhoto[]>([]);
-  const [loading, setLoading] = useState(true);
+  const firestore = useFirestore();
+  const [photos, setPhotos] = useState<GalleryPhoto[]>(placeholderData.gallery);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const collectionPath = `artifacts/${APP_ID}/public/data/gallery_photos`;
-    const q = query(
-      collection(db, collectionPath),
+  const galleryQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(
+      collection(firestore, `gallery_photos`),
       where("isAboutPhoto", "!=", true)
     );
+  }, [firestore]);
 
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const photosData: GalleryPhoto[] = [];
-      querySnapshot.forEach((doc) => {
-        photosData.push({ id: doc.id, ...doc.data() } as GalleryPhoto);
-      });
-      setPhotos(photosData);
-      setLoading(false);
-    }, (err) => {
-      console.error("Error fetching gallery photos:", err);
+  const { data: remotePhotos, isLoading: remoteLoading, error: remoteError } = useCollection<GalleryPhoto>(galleryQuery);
+
+  useEffect(() => {
+    setLoading(remoteLoading);
+  }, [remoteLoading]);
+
+  useEffect(() => {
+    if (remoteError) {
+      console.error("Error fetching gallery photos:", remoteError);
       setError("Could not load the gallery. Please check your connection or try again later.");
-      setLoading(false);
-    });
+    }
+  }, [remoteError]);
 
-    return () => unsubscribe();
-  }, []);
+  useEffect(() => {
+    if (remotePhotos && remotePhotos.length > 0) {
+      setPhotos(remotePhotos);
+    }
+  }, [remotePhotos]);
 
   if (loading) {
     return <GallerySkeleton />;
   }
 
-  if (error) {
+  if (error && (!photos || photos.length === 0)) {
     return (
       <Alert variant="destructive" className="mt-8">
         <AlertCircle className="h-4 w-4" />
