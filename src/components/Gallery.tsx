@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/carousel";
 
 const GalleryItem = ({ photo, onPhotoClick }: { photo: GalleryPhoto, onPhotoClick: (photo: GalleryPhoto) => void }) => (
-  <button onClick={() => onPhotoClick(photo)} className="group relative overflow-hidden rounded-lg shadow-lg aspect-square block w-full h-[250px] md:h-[300px]">
+  <button onClick={() => onPhotoClick(photo)} className="group relative overflow-hidden rounded-lg shadow-lg aspect-square block w-full h-[250px] md:h-[200px]">
     <Image
       src={photo.url}
       alt={photo.title || 'Kesiba Art piece'}
@@ -47,9 +47,9 @@ const GalleryItem = ({ photo, onPhotoClick }: { photo: GalleryPhoto, onPhotoClic
 );
 
 const GallerySkeleton = () => (
-  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
     {Array.from({ length: 8 }).map((_, index) => (
-      <Skeleton key={index} className="h-72 w-full rounded-lg" />
+      <Skeleton key={index} className="h-48 md:h-56 w-full rounded-lg" />
     ))}
   </div>
 );
@@ -149,14 +149,16 @@ export default function Gallery() {
       <Carousel
         opts={{
           align: "start",
-          loop: true,
+          loop: photos.length > 8,
         }}
         className="w-full relative"
       >
         <CarouselContent className="-ml-4">
           {photos.map((photo, index) => (
-            <CarouselItem key={photo.id || index} className="pl-4 basis-1/2 md:basis-1/3">
-              <GalleryItem photo={photo} onPhotoClick={openLightbox} />
+             <CarouselItem key={photo.id || index} className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4">
+                <div className="mb-4">
+                  <GalleryItem photo={photo} onPhotoClick={openLightbox} />
+                </div>
             </CarouselItem>
           ))}
         </CarouselContent>
