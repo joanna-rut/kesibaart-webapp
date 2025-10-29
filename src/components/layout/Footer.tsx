@@ -1,3 +1,5 @@
+'use client';
+
 export function Footer() {
   return (
     <footer className="bg-accent text-accent-foreground">

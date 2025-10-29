@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
 import { Toaster } from "@/components/ui/toaster"
 import { FirebaseClientProvider } from '@/firebase/client-provider';
+import { ClientLayout } from '@/components/layout/ClientLayout';
 
 export const metadata: Metadata = {
   title: 'Kesiba Art Gallery',
@@ -27,9 +26,9 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <FirebaseClientProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <ClientLayout>
+            {children}
+          </ClientLayout>
           <Toaster />
         </FirebaseClientProvider>
       </body>
