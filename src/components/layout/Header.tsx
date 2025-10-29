@@ -26,7 +26,7 @@ export function Header() {
       href={href}
       onClick={() => setMenuOpen(false)}
       className={cn(
-        'text-lg md:text-sm font-medium transition-colors hover:text-primary',
+        'text-lg md:text-sm font-bold transition-colors hover:text-primary',
         pathname === href ? 'text-primary' : 'text-foreground/80',
         className
       )}
