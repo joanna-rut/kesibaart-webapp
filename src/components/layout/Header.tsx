@@ -36,14 +36,14 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b">
-      <div className="container mx-auto flex h-48 items-center justify-between px-4">
+      <div className="container mx-auto flex h-56 items-center justify-between px-4">
         <Link href="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
             <Image
               src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_m8lzwm8lzwm8lzwm.png"
               alt="Kesiba Art logo"
-              width={400}
-              height={160}
-              className="h-40 w-auto"
+              width={500}
+              height={200}
+              className="h-52 w-auto"
               priority
               quality={100}
             />
