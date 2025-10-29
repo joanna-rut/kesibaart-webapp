@@ -36,15 +36,18 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
-      <div className="container mx-auto flex h-48 items-center justify-between px-4">
+      <div className="container mx-auto flex h-24 items-center justify-between px-4">
         <Link href="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
-            <Image
-                src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_1y6f3o1y6f3o1y6f.png"
-                alt="Kesiba Art logo"
-                width={375}
-                height={180}
-                className="h-[180px] w-auto"
-            />
+           <div className="flex items-center">
+              <Image
+                src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_y3vqgqy3vqgqy3vq.png"
+                alt="Kesiba Art logo K"
+                width={60}
+                height={60}
+                className="h-[60px] w-auto"
+              />
+              <span className="text-3xl font-headline text-accent -ml-2">esiba Art</span>
+            </div>
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
