@@ -1,6 +1,5 @@
 'use client';
 
-import SocialLinks from "@/components/SocialLinks";
 import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
 
@@ -23,13 +22,6 @@ export default function ContactPage() {
             Send an Email
           </a>
         </Button>
-
-        <h2 className="text-3xl font-headline mb-8 text-accent">
-          Find Me On
-        </h2>
-        <div className="max-w-md mx-auto">
-          <SocialLinks />
-        </div>
       </div>
     </div>
   );
