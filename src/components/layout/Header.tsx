@@ -19,7 +19,7 @@ const navLinks = [
 export function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const logoUrl = "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_p8wjbyp8wjbyp8wj.png";
+  const logoUrl = "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_gvdwl3gvdwl3gvdw%20(1).png";
 
   const NavLink = ({ href, label, className }: { href: string; label: string; className?: string; }) => (
     <Link
