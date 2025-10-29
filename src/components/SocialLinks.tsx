@@ -5,25 +5,25 @@ import { EtsyIcon, EBayIcon } from "@/components/icons";
 const socialLinks = [
   {
     name: "Instagram",
-    href: "https://instagram.com/your-handle",
+    href: "https://www.instagram.com/kesibaart/",
     icon: Instagram,
     color: "bg-[#E4405F] hover:bg-[#E4405F]/90",
   },
   {
     name: "Facebook",
-    href: "https://facebook.com/your-page",
+    href: "https://www.facebook.com/share/15TmLcy6WD/",
     icon: Facebook,
     color: "bg-[#1877F2] hover:bg-[#1877F2]/90",
   },
   {
     name: "Etsy",
-    href: "https://www.etsy.com/shop/your-shop",
+    href: "https://www.etsy.com/shop/kesibaart/",
     icon: EtsyIcon,
     color: "bg-[#F16521] hover:bg-[#F16521]/90",
   },
   {
     name: "eBay",
-    href: "https://www.ebay.com/usr/your-username",
+    href: "https://www.ebay.ca/sch/i.html?item=176714948962&rt=nc&_trksid=p4429486.m3561.l161211&_ssn=kesiba",
     icon: EBayIcon,
     color: "bg-[#000000] hover:bg-[#000000]/90",
   },
