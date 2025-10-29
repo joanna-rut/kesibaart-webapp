@@ -1,3 +1,4 @@
+
 {
   "aboutPhoto": {
     "id": "anna-profile-photo",
@@ -70,6 +71,11 @@
       "id": "ornament-12",
       "url": "https://picsum.photos/seed/ornament12/500/500",
       "title": "Delicate Figurine"
+    },
+    {
+      "id": "ornament-13",
+      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Photoroom-20240812_222509.png",
+      "title": "New Green Ornament"
     }
   ]
 }
