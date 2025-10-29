@@ -6,7 +6,7 @@ import { Mail, Copy, Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export default function ContactPage() {
-  const email = "mohammed3.tayeb@gmail.com";
+  const email = "kesibaart@gmail.com";
   const { toast } = useToast();
   const [hasCopied, setHasCopied] = useState(false);
 
