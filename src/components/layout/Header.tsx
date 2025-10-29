@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -18,7 +19,7 @@ const navLinks = [
 export function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const logoUrl = "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/logo.png";
+  const logoUrl = "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_41qpg041qpg041qp.png";
 
   const NavLink = ({ href, label, className }: { href: string; label: string; className?: string; }) => (
     <Link
