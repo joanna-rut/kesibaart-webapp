@@ -37,7 +37,7 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
-          <span className="font-headline text-2xl font-bold text-accent">
+          <span className="font-headline text-4xl font-bold text-accent">
             Kesiba Art
           </span>
         </Link>
