@@ -1,13 +1,11 @@
 import Gallery from "@/components/Gallery";
-import Hero from "@/components/Hero";
 import SocialLinks from "@/components/SocialLinks";
 import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <div className="container mx-auto px-4 py-8 pt-16 md:pt-24">
+      <div className="container mx-auto px-4 py-8 pt-28">
         <h1 className="text-4xl md:text-5xl font-headline text-center mb-8 text-accent">
           Gallery
         </h1>
