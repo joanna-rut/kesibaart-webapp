@@ -5,6 +5,11 @@
     "title": "Anna, the artist",
     "isAboutPhoto": true
   },
+  "heroBanner": {
+    "id": "hero-banner-1",
+    "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/bombka1.jpg",
+    "title": "Close-up of a blue and gold ornament"
+  },
   "gallery": [
     {
       "id": "ornament-1",
