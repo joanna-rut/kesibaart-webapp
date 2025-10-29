@@ -1,40 +1,35 @@
 'use client';
 
+import SocialLinks from "@/components/SocialLinks";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Mail } from "lucide-react";
 
 export default function ContactPage() {
+  const email = "mohammed3.tayeb@gmail.com";
+
   return (
     <div className="container mx-auto px-4 py-8 pt-28 min-h-screen">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-headline text-center mb-8 text-accent">
-          Contact Us
+      <div className="max-w-2xl mx-auto text-center">
+        <h1 className="text-4xl md:text-5xl font-headline mb-8 text-accent">
+          Get in Touch
         </h1>
-        <p className="text-center text-lg text-foreground/80 mb-12">
-          Have a question or a custom request? Send a message!
+        <p className="text-lg text-foreground/80 mb-8">
+          I would love to hear from you! Whether you have a question about a piece, a custom request, or just want to say hello, feel free to reach out.
         </p>
-        <form className="space-y-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <label htmlFor="name" className="text-sm font-medium">Name</label>
-              <Input id="name" placeholder="Your Name" />
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium">Email</label>
-              <Input id="email" type="email" placeholder="your.email@example.com" />
-            </div>
-          </div>
-          <div className="space-y-2">
-            <label htmlFor="message" className="text-sm font-medium">Message</label>
-            <Textarea id="message" placeholder="Your message..." rows={6} />
-          </div>
-          <div className="text-center">
-            <Button type="submit" size="lg" className="w-full sm:w-auto">
-              Send Message
-            </Button>
-          </div>
-        </form>
+        
+        <Button asChild size="lg" className="mb-12">
+          <a href={`mailto:${email}`}>
+            <Mail className="mr-2 h-5 w-5" />
+            Send an Email
+          </a>
+        </Button>
+
+        <h2 className="text-3xl font-headline mb-8 text-accent">
+          Find Me On
+        </h2>
+        <div className="max-w-md mx-auto">
+          <SocialLinks />
+        </div>
       </div>
     </div>
   );
