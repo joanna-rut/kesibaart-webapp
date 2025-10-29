@@ -8,7 +8,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import placeholderData from '@/app/lib/placeholder-images.json';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -89,7 +89,7 @@ export default function Gallery() {
     setSelectedPhoto(null);
   };
 
-  const handleNavigation = (direction: 'next' | 'prev') => {
+  const handleNavigation = useCallback((direction: 'next' | 'prev') => {
     if (!selectedPhoto || photos.length <= 1) return;
 
     const currentIndex = photos.findIndex(p => p.id === selectedPhoto.id);
@@ -102,7 +102,26 @@ export default function Gallery() {
       nextIndex = (currentIndex - 1 + photos.length) % photos.length;
     }
     setSelectedPhoto(photos[nextIndex]);
-  };
+  }, [selectedPhoto, photos]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!selectedPhoto) return;
+
+      if (event.key === 'ArrowRight') {
+        handleNavigation('next');
+      } else if (event.key === 'ArrowLeft') {
+        handleNavigation('prev');
+      } else if (event.key === 'Escape') {
+        closeLightbox();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedPhoto, handleNavigation]);
 
   if (loading) {
     return <GallerySkeleton />;
