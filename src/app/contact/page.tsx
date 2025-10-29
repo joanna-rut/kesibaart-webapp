@@ -1,10 +1,32 @@
 'use client';
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
+import { Mail, Copy, Check } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ContactPage() {
   const email = "mohammed3.tayeb@gmail.com";
+  const { toast } = useToast();
+  const [hasCopied, setHasCopied] = useState(false);
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(email).then(() => {
+      setHasCopied(true);
+      toast({
+        title: "Copied!",
+        description: "Email address copied to clipboard.",
+      });
+      setTimeout(() => setHasCopied(false), 2000);
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+      toast({
+        variant: "destructive",
+        title: "Failed to copy",
+        description: "Could not copy email address.",
+      });
+    });
+  };
 
   return (
     <div className="container mx-auto px-4 py-8 pt-28 min-h-screen">
@@ -16,12 +38,22 @@ export default function ContactPage() {
           I would love to hear from you! Whether you have a question about a piece, a custom request, or just want to say hello, feel free to reach out.
         </p>
         
-        <Button asChild size="lg" className="mb-12">
-          <a href={`mailto:${email}`}>
-            <Mail className="mr-2 h-5 w-5" />
-            Send an Email
+        <div className="p-4 bg-muted rounded-lg inline-flex items-center justify-center space-x-4">
+          <a href={`mailto:${email}`} className="text-lg font-mono text-primary hover:underline break-all">
+            {email}
           </a>
-        </Button>
+          <Button variant="ghost" size="icon" onClick={copyToClipboard} aria-label="Copy email address">
+            {hasCopied ? (
+              <Check className="h-5 w-5 text-green-600" />
+            ) : (
+              <Copy className="h-5 w-5" />
+            )}
+          </Button>
+        </div>
+
+        <p className="text-foreground/60 mt-8">
+          You can also click the email address to open your default email client.
+        </p>
       </div>
     </div>
   );
