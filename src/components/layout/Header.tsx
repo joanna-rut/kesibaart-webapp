@@ -10,7 +10,7 @@ import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { href: '/', label: 'Gallery' },
+  { href: '/', label: 'Home' },
   { href: '/about', label: 'My Story' },
   { href: '/contact', label: 'Contact' },
 ];
