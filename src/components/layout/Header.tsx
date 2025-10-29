@@ -39,14 +39,16 @@ export function Header() {
       <div className="container mx-auto flex h-24 items-center justify-between px-4">
         <Link href="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
            <div className="flex items-center">
-              <Image
-                src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_y3vqgqy3vqgqy3vq.png"
-                alt="Kesiba Art logo K"
-                width={60}
-                height={60}
-                className="h-[60px] w-auto"
-              />
-              <span className="text-3xl font-headline text-accent -ml-5">esiba Art</span>
+              <div className="mr-[-20px]">
+                <Image
+                  src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_y3vqgqy3vqgqy3vq.png"
+                  alt="Kesiba Art logo K"
+                  width={60}
+                  height={60}
+                  className="h-[60px] w-auto"
+                />
+              </div>
+              <span className="text-3xl font-headline text-accent">esiba Art</span>
             </div>
         </Link>
         <nav className="hidden md:flex items-center gap-6">
