@@ -39,20 +39,21 @@ export default function ContactPage() {
         </p>
         
         <div className="p-4 bg-muted rounded-lg inline-flex items-center justify-center space-x-4">
-          <a href={`mailto:${email}`} className="text-lg font-mono text-primary hover:underline break-all">
-            {email}
-          </a>
-          <Button variant="ghost" size="icon" onClick={copyToClipboard} aria-label="Copy email address">
-            {hasCopied ? (
-              <Check className="h-5 w-5 text-green-600" />
-            ) : (
-              <Copy className="h-5 w-5" />
-            )}
-          </Button>
+            <Mail className="h-5 w-5 text-primary" />
+            <span className="text-lg font-mono text-primary break-all">
+              {email}
+            </span>
+            <Button variant="ghost" size="icon" onClick={copyToClipboard} aria-label="Copy email address">
+                {hasCopied ? (
+                <Check className="h-5 w-5 text-green-600" />
+                ) : (
+                <Copy className="h-5 w-5" />
+                )}
+            </Button>
         </div>
 
         <p className="text-foreground/60 mt-8">
-          You can also click the email address to open your default email client.
+          Click the copy icon to copy my email address.
         </p>
       </div>
     </div>
