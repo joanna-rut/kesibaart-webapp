@@ -44,6 +44,8 @@ export function Header() {
               width={400}
               height={160}
               className="h-40 w-auto"
+              priority
+              quality={100}
             />
         </Link>
         <nav className="hidden md:flex items-center gap-6">
