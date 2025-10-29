@@ -13,11 +13,19 @@ export default function Home() {
         </h1>
         <Gallery />
         <Separator className="my-12 md:my-16 bg-primary/10" />
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl font-headline text-center mb-8 text-accent">
-            Find Us On
-          </h2>
-          <SocialLinks />
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+          <div className="flex flex-col items-center">
+            <h2 className="text-3xl font-headline text-center mb-8 text-accent">
+              Shop My Collection
+            </h2>
+            <SocialLinks type="shop" />
+          </div>
+          <div className="flex flex-col items-center">
+            <h2 className="text-3xl font-headline text-center mb-8 text-accent">
+              Follow My Journey
+            </h2>
+            <SocialLinks type="social" />
+          </div>
         </div>
       </div>
     </>

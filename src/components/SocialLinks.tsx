@@ -2,42 +2,52 @@ import { Button } from "@/components/ui/button";
 import { Instagram, Facebook } from "lucide-react";
 import { EtsyIcon, EBayIcon } from "@/components/icons";
 
-const socialLinks = [
+const allLinks = [
   {
     name: "Instagram",
     href: "https://www.instagram.com/kesibaart/",
     icon: Instagram,
-    color: "text-[#E4405F] hover:bg-[#E4405F] hover:text-white",
+    color: "text-primary/80 hover:bg-primary/10",
+    type: 'social',
   },
   {
     name: "Facebook",
     href: "https://www.facebook.com/share/15TmLcy6WD/",
     icon: Facebook,
-    color: "text-[#1877F2] hover:bg-[#1877F2] hover:text-white",
+    color: "text-primary/80 hover:bg-primary/10",
+    type: 'social',
   },
   {
     name: "Etsy",
     href: "https://www.etsy.com/shop/kesibaart/",
     icon: EtsyIcon,
-    color: "text-[#F16521] hover:bg-[#F16521] hover:text-white",
+    color: "text-primary/80 hover:bg-primary/10",
+    type: 'shop',
   },
   {
     name: "eBay",
     href: "https://www.ebay.ca/sch/i.html?item=176714948962&rt=nc&_trksid=p4429486.m3561.l161211&_ssn=kesiba",
     icon: EBayIcon,
-    color: "text-black dark:text-white hover:bg-black hover:text-white",
+    color: "text-primary/80 hover:bg-primary/10",
+    type: 'shop',
   },
 ];
 
-export default function SocialLinks() {
+interface SocialLinksProps {
+  type?: 'shop' | 'social' | 'all';
+}
+
+export default function SocialLinks({ type = 'all' }: SocialLinksProps) {
+  const filteredLinks = allLinks.filter(link => type === 'all' || link.type === type);
+  
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-      {socialLinks.map((link) => (
+    <div className="grid grid-cols-2 gap-4 w-full max-w-sm">
+      {filteredLinks.map((link) => (
         <Button
           key={link.name}
           asChild
           variant="outline"
-          className={`w-full text-base py-8 rounded-lg shadow-sm transition-colors duration-300 ${link.color} border-primary/20`}
+          className={`w-full text-base py-8 rounded-lg shadow-sm transition-all duration-300 ${link.color} border-primary/20 hover:shadow-md hover:-translate-y-1`}
         >
           <a
             href={link.href}
