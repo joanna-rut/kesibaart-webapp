@@ -36,16 +36,16 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
-      <div className="container mx-auto flex h-20 items-center justify-between px-4">
+      <div className="container mx-auto flex h-24 items-center justify-between px-4">
         <Link href="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
             <Image
                 src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_y3vqgqy3vqgqy3vq.png"
                 alt="Kesiba Art logo K"
-                width={40}
-                height={40}
-                className="h-10 w-auto"
+                width={60}
+                height={60}
+                className="h-16 w-auto"
             />
-          <span className="font-headline text-4xl font-bold text-accent -ml-2">
+          <span className="font-headline text-4xl font-bold text-accent -ml-4">
             esiba Art
           </span>
         </Link>
