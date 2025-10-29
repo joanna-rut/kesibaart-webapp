@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -37,8 +38,15 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
+            <Image
+                src="https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Gemini_Generated_Image_y3vqgqy3vqgqy3vq.png"
+                alt="Kesiba Art logo K"
+                width={40}
+                height={40}
+                className="h-10 w-auto"
+            />
           <span className="font-headline text-4xl font-bold text-accent">
-            Kesiba Art
+            esiba Art
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-6">
