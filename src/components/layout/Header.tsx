@@ -37,9 +37,9 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b">
-      <div className="container mx-auto flex h-24 items-center justify-between px-4">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
-          <Image src={logoUrl} alt="Kesiba Art Logo" width={128} height={128} className="h-20 w-20" />
+          <Image src={logoUrl} alt="Kesiba Art Logo" width={128} height={128} className="h-[72px] w-[72px]" />
         </Link>
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
@@ -57,7 +57,7 @@ export function Header() {
             <SheetContent side="right" className="w-[280px] bg-background">
               <div className="p-6 h-full flex flex-col">
                 <Link href="/" className="flex items-center gap-2 mb-8">
-                  <Image src={logoUrl} alt="Kesiba Art Logo" width={128} height={128} className="h-20 w-20" />
+                  <Image src={logoUrl} alt="Kesiba Art Logo" width={128} height={128} className="h-[72px] w-[72px]" />
                 </Link>
                 <nav className="flex flex-col gap-6">
                   {navLinks.map((link) => (
