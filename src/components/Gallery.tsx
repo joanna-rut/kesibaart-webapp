@@ -9,9 +9,16 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
 import placeholderData from '@/app/lib/placeholder-images.json';
 import { useEffect, useState } from 'react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
-const GalleryItem = ({ photo }: { photo: GalleryPhoto }) => (
-  <div className="group relative overflow-hidden rounded-lg shadow-lg aspect-square">
+const GalleryItem = ({ photo, onPhotoClick }: { photo: GalleryPhoto, onPhotoClick: (photo: GalleryPhoto) => void }) => (
+  <button onClick={() => onPhotoClick(photo)} className="group relative overflow-hidden rounded-lg shadow-lg aspect-square block w-full">
     <Image
       src={photo.url}
       alt={photo.title || 'Kesiba Art piece'}
@@ -22,13 +29,13 @@ const GalleryItem = ({ photo }: { photo: GalleryPhoto }) => (
     />
     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
     {photo.title && (
-      <div className="absolute bottom-0 left-0 p-4 w-full">
+      <div className="absolute bottom-0 left-0 p-4 w-full text-left">
         <h3 className="text-white text-lg font-headline opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
           {photo.title}
         </h3>
       </div>
     )}
-  </div>
+  </button>
 );
 
 const GallerySkeleton = () => (
@@ -44,6 +51,7 @@ export default function Gallery() {
   const [photos, setPhotos] = useState<GalleryPhoto[]>(placeholderData.gallery);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [selectedPhoto, setSelectedPhoto] = useState<GalleryPhoto | null>(null);
 
   const galleryQuery = useMemoFirebase(() => {
     if (!firestore) return null;
@@ -72,6 +80,14 @@ export default function Gallery() {
     }
   }, [remotePhotos]);
 
+  const openLightbox = (photo: GalleryPhoto) => {
+    setSelectedPhoto(photo);
+  };
+
+  const closeLightbox = () => {
+    setSelectedPhoto(null);
+  };
+
   if (loading) {
     return <GallerySkeleton />;
   }
@@ -87,10 +103,36 @@ export default function Gallery() {
   }
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-      {photos.map(photo => (
-        <GalleryItem key={photo.id} photo={photo} />
-      ))}
-    </div>
+    <>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+        {photos.map(photo => (
+          <GalleryItem key={photo.id} photo={photo} onPhotoClick={openLightbox} />
+        ))}
+      </div>
+
+      {selectedPhoto && (
+        <Dialog open={!!selectedPhoto} onOpenChange={(isOpen) => !isOpen && closeLightbox()}>
+          <DialogContent className="max-w-3xl">
+            <DialogHeader>
+              <DialogTitle className="font-headline text-2xl text-accent">{selectedPhoto.title}</DialogTitle>
+            </DialogHeader>
+            <div className="relative aspect-[4/3] w-full mt-4">
+              <Image
+                src={selectedPhoto.url}
+                alt={selectedPhoto.title || 'Enlarged view of Kesiba Art piece'}
+                fill
+                className="object-contain"
+                sizes="90vw"
+              />
+            </div>
+             {selectedPhoto.description && (
+                <DialogDescription className="mt-4 text-base text-foreground/80">
+                  {selectedPhoto.description}
+                </DialogDescription>
+            )}
+          </DialogContent>
+        </Dialog>
+      )}
+    </>
   );
 }
