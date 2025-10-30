@@ -15,7 +15,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from '@/components/ui/button';
 
@@ -154,12 +153,7 @@ export default function Gallery() {
                 sizes="90vw"
               />
             </div>
-             {selectedPhoto.description && (
-                <DialogDescription className="mt-4 text-base text-foreground/80 text-center">
-                  {selectedPhoto.description}
-                </DialogDescription>
-            )}
-
+            
             {photos.length > 1 && (
               <>
                 <Button 
