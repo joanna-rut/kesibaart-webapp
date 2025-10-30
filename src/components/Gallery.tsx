@@ -143,9 +143,9 @@ export default function Gallery() {
         <Dialog open={!!selectedPhoto} onOpenChange={(isOpen) => !isOpen && closeLightbox()}>
           <DialogContent className="max-w-3xl">
             <DialogHeader>
-              <DialogTitle className="font-headline text-2xl text-accent">{selectedPhoto.title}</DialogTitle>
+              <DialogTitle className="sr-only">Gallery Image</DialogTitle>
               <DialogDescription className="sr-only">
-                Enlarged view of {selectedPhoto.title || 'a gallery image'}. Use arrow keys to navigate.
+                Enlarged view of a gallery image. Use arrow keys to navigate.
               </DialogDescription>
             </DialogHeader>
             <div className="relative aspect-[4/3] w-full mt-4">

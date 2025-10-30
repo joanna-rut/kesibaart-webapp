@@ -26,43 +26,35 @@
   "gallery": [
     {
       "id": "ornament-1",
-      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/bombka1.jpg",
-      "title": "Blue and Gold Ornament"
+      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/bombka1.jpg"
     },
     {
       "id": "ornament-2",
-      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Photoroom-20240812_222509.png",
-      "title": "Green Ornament"
+      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Photoroom-20240812_222509.png"
     },
     {
       "id": "ornament-3",
-      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Photoroom-20250307_182520.png",
-      "title": "Red Ornament"
+      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Photoroom-20250307_182520.png"
     },
     {
       "id": "ornament-4",
-      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/20250926_155921.png",
-      "title": "Golden Lantern"
+      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/20250926_155921.png"
     },
     {
       "id": "ornament-5",
-      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Photoroom-20241009_201421.png",
-      "title": "Hand-painted Egg"
+      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/Photoroom-20241009_201421.png"
     },
     {
       "id": "ornament-6",
-      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/20251002_125512.jpg",
-      "title": "Intricate Bauble"
+      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/20251002_125512.jpg"
     },
     {
       "id": "ornament-7",
-      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/20250715_224012.png",
-      "title": "Festive Figurine"
+      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/20250715_224012.png"
     },
     {
       "id": "ornament-8",
-      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/20250928_233905.jpg",
-      "title": "Silver Ornament"
+      "url": "https://raw.githubusercontent.com/joanna-rut/kesibaart/main/images/20250928_233905.jpg"
     }
   ]
 }
