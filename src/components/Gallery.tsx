@@ -155,7 +155,7 @@ export default function Gallery() {
               />
             </div>
              {selectedPhoto.description && (
-                <DialogDescription className="mt-4 text-base text-foreground/80">
+                <DialogDescription className="mt-4 text-base text-foreground/80 text-center">
                   {selectedPhoto.description}
                 </DialogDescription>
             )}
