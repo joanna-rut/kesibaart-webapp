@@ -46,6 +46,7 @@ export function Header() {
               priority
               quality={100}
               className="h-20 w-auto"
+              style={{ width: 'auto' }}
             />
         </Link>
         <nav className="hidden md:flex items-center gap-6">
@@ -73,6 +74,7 @@ export function Header() {
                             priority
                             quality={100}
                             className="h-16 w-auto"
+                            style={{ width: 'auto' }}
                         />
                     </Link>
                 </div>

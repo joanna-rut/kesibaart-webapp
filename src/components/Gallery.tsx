@@ -13,6 +13,7 @@ import { useEffect, useState, useCallback } from 'react';
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
@@ -143,6 +144,9 @@ export default function Gallery() {
           <DialogContent className="max-w-3xl">
             <DialogHeader>
               <DialogTitle className="font-headline text-2xl text-accent">{selectedPhoto.title}</DialogTitle>
+              <DialogDescription className="sr-only">
+                Enlarged view of {selectedPhoto.title || 'a gallery image'}. Use arrow keys to navigate.
+              </DialogDescription>
             </DialogHeader>
             <div className="relative aspect-[4/3] w-full mt-4">
               <Image
